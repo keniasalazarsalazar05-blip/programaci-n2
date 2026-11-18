@@ -1,0 +1,53 @@
+-- CREAR BASE DE DATOS
+CREATE DATABASE IF NOT EXISTS Tienda;
+USE Tienda;
+SHOW TABLES;
+-- SELECCIONAR BASE DE DATOS
+USE Tienda;
+SELECT * FROM Categoria;
+
+SELECT * FROM Producto;
+-- CREAR TABLA CATEGORIA
+CREATE TABLE Categoria (
+    Codigo INT PRIMARY KEY AUTO_INCREMENT,
+    Nombre VARCHAR(50) NOT NULL
+);
+
+-- CREAR TABLA PRODUCTO
+CREATE TABLE Producto (
+    Codigo INT PRIMARY KEY AUTO_INCREMENT,
+    Nombre VARCHAR(50) NOT NULL,
+    Precio DECIMAL(10,2),
+    Cantidad INT,
+    Categoria INT,
+    FOREIGN KEY (Categoria) REFERENCES Categoria(Codigo)
+);
+
+-- INSERTAR CATEGORIAS
+INSERT INTO Categoria (Nombre)
+VALUES
+('Electronica'),
+('Ropa');
+
+-- INSERTAR PRODUCTOS
+INSERT INTO Producto (Nombre, Precio, Cantidad, Categoria)
+VALUES
+('Laptop', 350000, 5, 1),
+('Celular', 180000, 10, 1),
+('Camisa', 12000, 20, 2);
+
+-- MOSTRAR CATEGORIAS
+SELECT * FROM Categoria;
+
+-- MOSTRAR PRODUCTOS
+SELECT * FROM Producto;
+
+-- ELIMINAR UN PRODUCTO
+DELETE FROM Producto
+WHERE Codigo = 3;
+
+-- MOSTRAR PRODUCTOS ACTUALIZADOS
+SELECT * FROM Producto;
+
+-- COMANDO PARA ELIMINAR LA BASE DE DATOS
+-- DROP DATABASE Tienda;
